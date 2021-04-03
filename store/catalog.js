@@ -1,6 +1,6 @@
 const state = {
     goodsList : {
-        backpacks : [
+        backpack : [
             {
                 id: 1,
                 name: "Рюкзак туристический трансформер Polar",
@@ -87,7 +87,7 @@ const state = {
                 rating: "5"
             }
         ],
-        tShirts : [
+        tshirt : [
             {
                 id: 1,
                 name: "Футболка Patrick",
@@ -174,7 +174,93 @@ const state = {
                 rating: "5"
             }
         ],
-        shirts : {}
+        shirt : [
+            {
+                id: 1,
+                name: "Рубашка Patrick",
+                price: 399,
+                photo: "https://cdn1.ozone.ru/s3/multimedia-o/wc1200/6048299064.jpg",
+                rating: "1"
+            },
+            {
+                id: 2,
+                name: "Рубашка Jack & Jones Spring",
+                price: 586,
+                photo: "https://cdn1.ozone.ru/s3/multimedia-o/wc1200/6048299064.jpg",
+                rating: "1.5"
+    
+            },
+            {
+                id: 3,
+                name: "Рубашка БАНЗАЙ",
+                price: 2500,
+                photo: "https://cdn1.ozone.ru/s3/multimedia-o/wc1200/6048299064.jpg",
+                rating: "2.5"
+            },
+            {
+                id: 4,
+                name: "Рубашка Mark Formelle",
+                price: 2700,
+                photo: "https://cdn1.ozone.ru/s3/multimedia-o/wc1200/6048299064.jpg",
+                rating: "2"
+            },
+            {
+                id: 5,
+                name: "Рубашка ТВОЕ",
+                price: 3100,
+                photo: "https://cdn1.ozone.ru/s3/multimedia-o/wc1200/6048299064.jpg",
+                rating: "3"
+            },
+            {
+                id: 6,
+                name: "Рубашка Pepe Jeans",
+                price: 4700,
+                photo: "https://cdn1.ozone.ru/s3/multimedia-o/wc1200/6048299064.jpg",
+                rating: "3.5"
+            },
+            {
+                id: 7,
+                name: "Рубашка MUSTANG Aaron C Print",
+                price: 2350,
+                photo: "https://cdn1.ozone.ru/s3/multimedia-o/wc1200/6048299064.jpg",
+                rating: "4"
+            },
+            {
+                id: 8,
+                name: "Рубашка US Basic",
+                price: 5100,
+                photo: "https://cdn1.ozone.ru/s3/multimedia-o/wc1200/6048299064.jpg",
+                rating: "4"
+            },
+            {
+                id: 9,
+                name: "Рубашка BeGood",
+                price: 4300,
+                photo: "https://cdn1.ozone.ru/s3/multimedia-o/wc1200/6048299064.jpg",
+                rating: "4.5"
+            },
+            {
+                id: 10,
+                name: "Рубашка Mark Formelle",
+                price: 9800,
+                photo: "https://cdn1.ozone.ru/s3/multimedia-o/wc1200/6048299064.jpg",
+                rating: "5"
+            },
+            {
+                id: 11,
+                name: "Рубашка US Basic",
+                price: 3600,
+                photo: "https://cdn1.ozone.ru/s3/multimedia-o/wc1200/6048299064.jpg",
+                rating: "1"
+            },
+            {
+                id: 12,
+                name: "Рубашка StarkCotton",
+                price: 1100,
+                photo: "https://cdn1.ozone.ru/s3/multimedia-o/wc1200/6048299064.jpg",
+                rating: "5"
+            }
+        ]
     }
 
 }

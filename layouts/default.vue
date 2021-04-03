@@ -1,18 +1,17 @@
 <template>
   <div>
-    <div class="header">
-      <Navbar 
-        @openBasketPanel="openBasketPanel"
-      />
+    <div class="row header">
+      <div class="col-12">
+        <Navbar 
+          @openBasketPanel="openBasketPanel"
+        />
+      </div>
     </div>
     <div class="row">
       <div class="col-1">
         <Sidebar />
       </div>
       <div class="col-11">
-        <div class="row">
-          <SortFilter />
-        </div>
         <BasketSlide
           @closeBasketPanel="closeBasketPanel"
         />
@@ -25,14 +24,12 @@
 <script>
 import Navbar from '@/components/templates/Navbar'
 import Sidebar from '@/components/templates/Sidebar'
-import SortFilter from '@/components/SortFilter'
 import BasketSlide from '@/components/BasketSlide'
 
 export default {
   components : {
     Navbar,
     Sidebar,
-    SortFilter,
     BasketSlide
   },
   mounted () {
@@ -40,7 +37,7 @@ export default {
   },
   methods: {
     redirectPath() {
-      this.$router.push('/catalog')
+      this.$router.push('/catalog/backpack')
     },
     openBasketPanel() {
       document.getElementById("menu").classList.add('menu-open');
@@ -53,11 +50,127 @@ export default {
 </script>
 
 <style>
+/* - Переиспользуемые стили */
+/* -- Стиль при наведений */
+.hover-icon:hover {
+  transition: 0.5s;
+  filter: brightness(0);
+  cursor: pointer;
+}
+.hover-icon {
+  transition: 0.5s;
+}
+
+/* -- Базовые */
+ul {
+  padding-left: 0;
+  margin: 0;
+}
+ul > li {
+  list-style-type: none;
+}
+input {
+  width: 100%;
+  background: #F8F8F8;
+  border-radius: 8px;
+  height: 50px;
+  text-indent: 20px;
+  border-style: unset !important;
+}
+select{
+  border: none;
+  position: relative;
+  outline: none;
+  box-shadow: 0px 4px 16px rgb(0 0 0 / 5%);
+  text-align: start;
+  height: 40px;
+  font: 400 14px Arial;
+  width: 160px;
+  text-indent: 10px;
+  border-radius: 33px;
+  color: #59606D;
+}
+a {
+  text-decoration: none;
+}
+:focus {
+  outline: none !important;
+}
+.nuxt-link-exact-active, .nuxt-link-active {
+  text-decoration: underline;
+  color: black !important;
+}
+.f-nowrap {
+  white-space: nowrap;
+}
+.f-bold {
+  font-weight: bold;
+}
+.w-15 {
+  width: 15px;
+}
+.w-20 {
+  width: 20px;
+}
+.pointer {
+  cursor: pointer;
+}
+.position-absolute {
+  position: absolute;
+}
+
+/* -- Цвет тени */
+.box-shadow {
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* -- Цвет фона */
+.b-white {
+  background: white;
+}
+
+/* -- Размер текста */
+.f-size-14 {
+  font-size: 14px;
+}
+.f-size-18 {
+  font-size: 18px;
+}
+
+
+/* -- Цвет текста */
+.f-black {
+  color: #1F1F1F;
+}
+.f-gray {
+  color: #59606D;
+}
+.f-yellow {
+  color: #F2C94C;
+}
+
 .pt-40 {
   padding-top: 40px;
 }
 .pb-15 {
   padding-bottom: 15px;
+}
+
+/* -- Кнопки */
+.btn-full-width {
+  width: 100% !important;
+  height: 50px !important;
+  background: black !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font: 400 16px Arial !important;
+  border-style: none !important;
+  cursor: pointer !important;
+  transition: 0.5s;
+}
+.btn-full-width:hover {
+  transition: 0.5s;
+  background: #59606D !important;
 }
 
 
@@ -80,97 +193,26 @@ export default {
 
 
 
-.font-size-20 {
-  font-size: 20px;
-}
-.font-size-15 {
-  font-size: 15px;
-}
 
-.font-bold {
-  font-weight: bold;
-}
-
-
-
-.text-black {
-  color: black;
-}
-.text-gray {
-  color: #59606D;
-}
-
-a {
-  text-decoration: none;
-}
-
-.nuxt-link-exact-active, .nuxt-link-active {
-  text-decoration: line-through;
-}
-
-.btn-full-width {
-  width: 100% !important;
-  height: 50px !important;
-  background: black !important;
-  color: white !important;
-  border-radius: 8px !important;
-  font: 400 16px Arial !important;
-  border-style: none !important;
-  cursor: pointer !important;
-  transition: 0.5s;
-}
-.btn-full-width:hover {
-  transition: 0.5s;
-  background: #59606D !important;
-}
-:focus {
-  outline: none !important;
-}
-
-select{
-  border: none;
-  position: relative;
-  outline: none;
-  box-shadow: 0px 4px 16px rgb(0 0 0 / 5%);
-  text-align: start;
-  height: 40px;
-  font: 400 14px Arial;
-  width: 160px;
-  text-indent: 10px;
-  border-radius: 33px;
-  color: #59606D;
-}
 
 /* header style */
 .header {
   background: #FFFFFF;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
   border-radius: 0px 0px 8px 8px;
-}
-.header-logo {
-  padding: 17px 32px;
+  height: 66px;
 }
 .header-basket {
   float: right;
   position: relative;
-  top: 18px;
+  top: 11px;
   right: 108px;
   cursor: pointer;
 }
 
-input {
-  width: 100%;
-  background: #F8F8F8;
-  border-radius: 8px;
-  height: 50px;
-  text-indent: 20px;
-  border-style: unset !important;
-}
-.input-error {
-  border: 0.5px red !important;
-}
 
-/* UNIVERSAL */
+
+
 
 html,
 body {
@@ -183,60 +225,16 @@ body {
   font-size: 100%;
 }
 
-/* ROOT FONT STYLES */
-
 * {
   font-family: 'PT Sans', sans-serif;
   color: #1F1F1F;
   line-height: 1.5;
 }
 
-/* TYPOGRAPHY */
-
 h1 {
   margin: 0;    
   font-size: 32px;
 }
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.375rem;
-}
-
-h4 {
-  font-size: 1.125rem;
-}
-
-h5 {
-  font-size: 1rem;
-}
-
-h6 {
-  font-size: 0.875rem;
-}
-
-p {
-  font-size: 1.125rem;
-  font-weight: 200;
-  line-height: 1.8;
-}
-
-.font-light {
-  font-weight: 300;
-}
-
-.font-regular {
-  font-weight: 400;
-}
-
-.font-heavy {
-  font-weight: 700;
-}
-
-/* POSITIONING */
 
 .left {
   text-align: left;
@@ -255,8 +253,6 @@ p {
 .justify {
   text-align: justify;
 }
-
-/* ==== GRID SYSTEM ==== */
 
 .container {
   width: 90%;
@@ -413,17 +409,5 @@ p {
     width: 75%;
     max-width: 60rem;
   }
-}
-
-ul {
-  padding-left: 0;
-  margin: 0;
-}
-ul > li {
-  list-style-type: none;
-}
-
-.cursor-pointer {
-  cursor: pointer;
 }
 </style>

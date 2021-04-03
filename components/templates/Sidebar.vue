@@ -3,9 +3,9 @@
         <div class="col-12">
             <h1>Каталог</h1>
             <ul class="sidebar-title-list mt-20">
-                <li class="cursor-pointer pb-15 menu-item"><NuxtLink to="/catalog/backpack">Рюкзаки</NuxtLink></li>
-                <li class="cursor-pointer pb-15 menu-item"><NuxtLink to="/catalog/tshirt">Футболки</NuxtLink></li>
-                <li class="cursor-pointer menu-item"><NuxtLink to="/catalog/shirt">Рубашки</NuxtLink></li>
+                <li class="pb-15"><NuxtLink to="/catalog/backpack" class="menu-item">Рюкзаки</NuxtLink></li>
+                <li class="pb-15"><NuxtLink to="/catalog/tshirt" class="menu-item">Футболки</NuxtLink></li>
+                <li><NuxtLink to="/catalog/shirt" class="menu-item">Рубашки</NuxtLink></li>
             </ul>
         </div>
     </div>

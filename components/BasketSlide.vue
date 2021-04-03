@@ -18,8 +18,8 @@
         <div class="row center">
           <div class="col-12">
             <ul>
-              <li class="font-size-20 font-bold">Заявка успешно отправлена</li>
-              <li class="font-size-15 text-gray">
+              <li class="f-size-18 f-bold">Заявка успешно отправлена</li>
+              <li class="f-size-14 f-gray">
                 Вскоре наш менеджер свяжется с Вами
               </li>
             </ul>
@@ -30,7 +30,7 @@
         <template v-if="basketGoogs.length == 0">
           <div class="row">
             <div class="col-12">
-              <span class="font-size-20 text-black"
+              <span class="f-size-18 f-black"
                 >Пока что вы ничего не добавили в корзину.</span
               >
             </div>
@@ -46,7 +46,7 @@
         <template v-else>
           <div class="row mb-10">
             <div class="col-12">
-              <span class="text-gray">Товары в корзине</span>
+              <span class="f-gray">Товары в корзине</span>
             </div>
           </div>
           <div class="row" v-for="(item, index) in basketGoogs" :key="index">
@@ -72,7 +72,7 @@
           <form @submit.prevent="createOrder">
             <div class="row">
               <div class="col-12">
-                <span class="text-gray">Оформить заказ</span>
+                <span class="f-gray">Оформить заказ</span>
               </div>
               <div class="col-12">
                 <input

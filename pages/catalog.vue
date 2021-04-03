@@ -3,8 +3,8 @@
     <div class="col-12">
       <div class="row right">
         <div class="col-12">
-          <img class="sort-rating-icon" src="~/assets/sort-icon.svg" alt="" />
-          <select name="sortBy" id="sortBy" @change="sortingOfGoods(sortType)" v-model="sortType">
+          <img class="sort-icon w-20 position-absolute" src="~/assets/sort-icon.svg" alt="" />
+          <select name="sortBy" id="sortBy" @change="sortingOfGoods(sortType, $route.name.substring(8))" v-model="sortType">
             <option v-for="(item, index) in sortOptions" :value="item.value" :key="index">{{item.text}}</option>
           </select>
         </div>
@@ -12,15 +12,16 @@
       <div class="row">
           <nuxt-child
            :productList="productList"
-        />
+           @addGoodBasketBackpackItem="addGoodItem($event, 'backpack')"
+           @addGoodBasketTShirtItem="addGoodItem($event, 'tshirt')"
+           @addGoodBasketShirtItem="addGoodItem($event, 'shirt')"
+          />
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -35,96 +36,70 @@ export default {
   },
   mounted () {
     this.getAllGoods();
-    // this.sortingOfGoods();
+    this.sortingOfGoods(this.sortType, this.$route.name.substring(8));
   },
   methods: {
+    addGoodItem(index, type) {
+      this.$store.dispatch("GET_BASKET_ITEM", this.productList[type][index]);
+    },
     getAllGoods() {
       this.productList = this.$store.getters.GOODS
     },
-    // sortingOfGoods(type) {
-    //   switch (type) {
-    //     case 'priceDown':
-    //       this.sortGoodsList(this.productList, 'down')
-    //       break;
-    //     case 'priceUp':
-    //       this.sortGoodsList(this.productList, 'up')
-    //       break;
-    //     default:
-    //       this.sortGoodsList(this.productList, 'rating')
-    //       break;
-    //   }
-    // },
-    addGoodsBasket(index) {
-      this.$store.dispatch("GET_BASKET_ITEM", this.productList[index]);
+    sortingOfGoods(type, name) {
+      switch (type) {
+        case 'priceDown':
+          this.sortGoodsList(this.productList[name], name, 'down')
+          break;
+        case 'priceUp':
+          this.sortGoodsList(this.productList[name], name, 'up')
+          break;
+        default:
+          this.sortGoodsList(this.productList[name], name, 'rating')
+          break;
+      }
     },
-    // sortGoodsList(goodsList, type){
-    //   goodsList.sort(function(a , b) {
-    //       if(type == 'down')
-    //         return b.price - a.price;
-    //       else if(type == 'up')
-    //         return a.price - b.price;
-    //       else if(type == 'rating')
-    //         return a.rating - b.rating;
-    //   });
-    //   goodsList.reverse();
-    // }
+
+    sortGoodsList(goodsList, arrName, type){
+      let sortable = []
+      for(let goodItem in goodsList){
+        sortable.push(goodsList[goodItem])
+      }
+      
+      sortable.sort(function(a , b) {
+          if(type == 'down')
+            return b.price - a.price;
+          else if(type == 'up')
+            return a.price - b.price;
+          else if(type == 'rating')
+            return a.rating - b.rating;
+      });
+      sortable.reverse();
+      this.productList[arrName] = sortable
+    }
   },
 }
 </script>
 
 <style>
-.sort-rating-icon {
-  width: 20px;
-  position: absolute;
-  right: 195px;
-  top: 18px;
-}
-.add-good:hover {
-  transition: 0.5s;
-  filter: brightness(0);
-  cursor: pointer;
-}
-.add-good {
-  transition: 0.5s;
-}
 .card {
-  background: #FFFFFF;
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   padding: 16px;
   position: relative;
-}
-.card-name {
-  font-size: 14px;
-  line-height: 18px;
-  color: #59606D;
-  white-space: nowrap;
-}
-.card-price {
-  font-size: 18px;
-  line-height: 18px;
-  color: #1F1F1F;
-  font-weight: bold;
 }
 .card-basket {
   position: absolute;
   right: 18px;
   top: 18px;
 }
-.card-basket > span > img {
-  width: 15px;
-  cursor: pointer;
-}
 .card-rating {
   position: absolute;
-
 }
 .card-rating > span {
-  font-size: 14px;
-  font-weight: bold;
-  color: #F2C94C;
-  position: absolute;
   left: 18px;
   bottom: 3px;
+}
+.sort-icon {
+  right: 195px;
+  top: 18px;
 }
 </style>
