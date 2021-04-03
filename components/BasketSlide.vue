@@ -58,9 +58,6 @@
           </div>
         </div>
       </template>
-
-
-
       </div>
     </nav>
 </template>
