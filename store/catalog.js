@@ -50,7 +50,7 @@ const state = {
         },
         {
             id: 9,
-            name: "Рюкзак туристический ТАЙГА ЦЕНТР ЭКИПИРОВКИ",
+            name: "Рюкзак туристический ТАЙГА ЦЕНТР",
             price: 4300,
             photo: "https://cdn1.ozone.ru/multimedia/wc250/1022171016.jpg"
         },

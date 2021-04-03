@@ -1,24 +1,84 @@
 <template>
-    <div id="mySidenav" class="sidenav">
-        <span class="closebtn" @click="handlerCloseBasketPanel">&times;</span>
-        <ul v-for="(item, index) in BASKET" :key="index">
-            <li>{{item}}</li>
-        </ul>
-    </div>
+    <nav id="menu">
+      <div class="menu-content">
+      <div class="row">
+        <div class="col-6">
+          <span class="title">Корзина</span>
+        </div>
+        <div class="col-6 right">
+          <span class="closebtn" @click="handlerCloseBasketPanel">&times;</span>
+        </div>
+      </div>
+      <template v-if="basketGoogs.length == 0">
+        <div class="row">
+          <div class="col-12">
+            <span class="font-size-20 text-black">Пока что вы ничего не добавили в корзину.</span>
+          </div>
+        </div>
+        <div class="row mt-10">
+          <div class="col-12">
+            <button class="btn-full-width">Перейти к выбору</button>
+          </div>
+        </div>
+      </template>
+      <template v-else>
+        <div class="row mb-10">
+          <div class="col-12">
+            <span class="text-gray">Товары в корзине</span>
+          </div>
+        </div>
+        <div class="row" v-for="(item, index) in basketGoogs" :key="index">
+          <div class="col-12">
+            <div class="card-basket-item">
+              <div class="row">
+                <div class="col-3">
+                    <button @click="trashGoodItem(index)">O</button><img  class="image-basket-goods" :src="item.photo">
+                </div>
+                <div class="col-8">
+                  <ul>
+                    <li class="card-basket-item-name">{{item.name}}</li>
+                    <li class="card-basket-item-price">{{item.price}} ₽</li>
+                  </ul>
+                </div>
+                <div class="col-1">
+                  <img src="~/assets/trash.svg" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <span class="text-gray">Оформить заказ</span>
+          </div>
+          <div class="col-12">
+            <input class="mb-20" type="text" placeholder="Ваше имя" required>
+            <input class="mb-20" type="text" placeholder="Телефон" required>
+            <input type="text" placeholder="Адрес" required>
+          </div>
+        </div>
+      </template>
+
+
+
+      </div>
+    </nav>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
 
 export default {
     data() {
         return {
+          basketGoogs: this.$store.getters.BASKET
         }
     },
-    computed: mapGetters(["BASKET"]),
     methods: {
         handlerCloseBasketPanel() {
             this.$emit('closeBasketPanel')
+        },
+        trashGoodItem(index) {
+          this.$store.dispatch('DELETE_BASKET_ITEM', index)
         }
     },
 }
@@ -26,56 +86,49 @@ export default {
 
 
 <style scoped>
-/* Боковое навигационное меню */
-.sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 ширина - изменить это с помощью JavaScript */
-    position: fixed; /* Оставайтесь на месте */
-    z-index: 1; /* Оставайтесь сверху */
-    top: 0; /* Оставайтесь наверху */
-    right: 0;
-    overflow-x: hidden; /* Отключить горизонтальную прокрутку */
-    padding-top: 60px; /* Поместите контент в 60px сверху */
-    transition: 0.5s; /* 0.5 второй эффект перехода слайда в боковой навигации */
-    background: #FFFFFF;
-    box-shadow: -4px 0px 16px rgba(0, 0, 0, 0.05);
-    border-radius: 8px 0px 0px 8px;
-}
-
-/* Ссылки меню навигации */
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-/* Когда вы наводите курсор мыши на навигационные ссылки, изменяется их цвет */
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-/* Положение и стиль кнопки закрытия (верхний правый угол) */
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+.closebtn {
+  font-size: 32px;
   cursor: pointer;
 }
+.menu-content {
+  padding: 40px;
+}
+.card-basket-item {
+  background: #FFFFFF;
+  box-shadow: 0px 4px 16px rgb(0 0 0 / 5%);
+  border-radius: 8px;
+  padding: 12px;
 
-/* Стиль содержимого страницы - используйте это, если вы хотите сдвинуть содержимое страницы вправо при открытии боковой навигации */
-#main {
-  transition: margin-left .5s;
-  padding: 20px;
+}
+.image-basket-goods {
+  width: 70px;
+  margin-right: 15px;
+}
+.card-basket-item-name {
+  font-size: 14px;
+  line-height: 18px;
+  color: #59606D;
+  margin-bottom: 5px;
+}
+.card-basket-item-price {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 18px;
+  color: black;
+}
+#menu {
+	position: fixed;
+  right: -460px;
+	width: 460px;
+	height: 100%;
+	top: 0;
+  z-index: 1;
+  background: #FFFFFF;
+  box-shadow: -4px 0px 16px rgba(0, 0, 0, 0.05);
+  border-radius: 8px 0px 0px 8px;
 }
 
-/* На экранах меньшего размера, где высота меньше 450px, измените стиль sidenav (меньше отступов и меньший размер шрифта) */
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+#menu.menu-open {
+	right: 0;
 }
 </style>

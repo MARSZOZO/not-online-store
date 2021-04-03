@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span class="sidebar-title">Каталог</span>
+        <span class="title">Каталог</span>
         <ul class="sidebar-title-list">
             <li class="sidebar-title-list__title">Рюкзаки</li>
             <li class="sidebar-title-list__title">Футболки</li>
@@ -9,16 +9,14 @@
     </div>
 </template>
 
-<style scoped>
-.sidebar-title {
+<style>
+.title {
     font-weight: bold;
     font-size: 32px;
     line-height: 41px;
     color: #1F1F1F;
 }
-.sidebar-title {
-    list-style: none;
-}
+
 .sidebar-title-list__title {
     font-size: 16px;
     line-height: 21px;

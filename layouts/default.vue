@@ -37,17 +37,63 @@ export default {
   },
   methods: {
     openBasketPanel() {
-      document.getElementById("mySidenav").style.width = "460px";
+      document.getElementById("menu").classList.add('menu-open');
     },
     closeBasketPanel() {
-      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("menu").classList.remove('menu-open');
     }
   },
 }
 </script>
 
 <style>
+.pt-40 {
+  padding-top: 40px;
+}
 
+
+
+.mt-10 {
+  margin-top: 10px;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+
+
+
+.font-size-20 {
+  font-size: 20px;
+}
+
+
+
+.text-black {
+  color: black;
+}
+.text-gray {
+  color: #59606D;
+}
+
+
+
+.btn-full-width {
+  width: 100% !important;
+  height: 50px !important;
+  background: black !important;
+  color: white !important;
+  border-radius: 8px !important;
+  font: 400 16px Arial !important;
+  border-style: none !important;
+  cursor: pointer !important;
+}
+:focus {
+  outline: none !important;
+}
 /* header style */
 .header {
   background: #FFFFFF;
@@ -62,8 +108,16 @@ export default {
   position: relative;
   top: 18px;
   right: 108px;
+  cursor: pointer;
 }
 
+input {
+  width: 100%;
+  background: #F8F8F8;
+  border-radius: 8px;
+  border: none;
+  height: 50px;
+}
 
 
 /* UNIVERSAL */
