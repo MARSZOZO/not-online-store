@@ -6,10 +6,10 @@
       />
     </div>
     <div class="row">
-      <div class="col-2">
+      <div class="col-1">
         <Sidebar />
       </div>
-      <div class="col-10">
+      <div class="col-11">
         <div class="row">
           <SortFilter />
         </div>
@@ -35,7 +35,13 @@ export default {
     SortFilter,
     BasketSlide
   },
+  mounted () {
+    this.redirectPath();
+  },
   methods: {
+    redirectPath() {
+      this.$router.push('/catalog')
+    },
     openBasketPanel() {
       document.getElementById("menu").classList.add('menu-open');
     },
@@ -50,10 +56,18 @@ export default {
 .pt-40 {
   padding-top: 40px;
 }
+.pb-15 {
+  padding-bottom: 15px;
+}
 
 
-
+.mt-25vw {
+  margin-top: 25vw;
+}
 .mt-10 {
+  margin-top: 10px;
+}
+.mt-20 {
   margin-top: 10px;
 }
 .mb-10 {
@@ -69,6 +83,13 @@ export default {
 .font-size-20 {
   font-size: 20px;
 }
+.font-size-15 {
+  font-size: 15px;
+}
+
+.font-bold {
+  font-weight: bold;
+}
 
 
 
@@ -79,7 +100,13 @@ export default {
   color: #59606D;
 }
 
+a {
+  text-decoration: none;
+}
 
+.nuxt-link-exact-active, .nuxt-link-active {
+  text-decoration: line-through;
+}
 
 .btn-full-width {
   width: 100% !important;
@@ -90,10 +117,30 @@ export default {
   font: 400 16px Arial !important;
   border-style: none !important;
   cursor: pointer !important;
+  transition: 0.5s;
+}
+.btn-full-width:hover {
+  transition: 0.5s;
+  background: #59606D !important;
 }
 :focus {
   outline: none !important;
 }
+
+select{
+  border: none;
+  position: relative;
+  outline: none;
+  box-shadow: 0px 4px 16px rgb(0 0 0 / 5%);
+  text-align: start;
+  height: 40px;
+  font: 400 14px Arial;
+  width: 160px;
+  text-indent: 10px;
+  border-radius: 33px;
+  color: #59606D;
+}
+
 /* header style */
 .header {
   background: #FFFFFF;
@@ -115,10 +162,13 @@ input {
   width: 100%;
   background: #F8F8F8;
   border-radius: 8px;
-  border: none;
   height: 50px;
+  text-indent: 20px;
+  border-style: unset !important;
 }
-
+.input-error {
+  border: 0.5px red !important;
+}
 
 /* UNIVERSAL */
 
@@ -136,15 +186,16 @@ body {
 /* ROOT FONT STYLES */
 
 * {
-  font-family: 'Lato', Helvetica, sans-serif;
-  color: #333447;
+  font-family: 'PT Sans', sans-serif;
+  color: #1F1F1F;
   line-height: 1.5;
 }
 
 /* TYPOGRAPHY */
 
 h1 {
-  font-size: 2.5rem;
+  margin: 0;    
+  font-size: 32px;
 }
 
 h2 {
@@ -370,5 +421,9 @@ ul {
 }
 ul > li {
   list-style-type: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 </style>

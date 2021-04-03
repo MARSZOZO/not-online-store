@@ -7,6 +7,9 @@ const mutations = {
     },
     DELETE_BASKET : (state, payload) => {
         state.basket.splice(payload, 1)
+    },
+    CLEAR_BASKET : (state) => {
+        state.basket = []
     }
 }
 const getters = {
@@ -20,6 +23,9 @@ const actions = {
     },
     DELETE_BASKET_ITEM(context, payload){
         context.commit('DELETE_BASKET', payload)
+    },
+    CLEAR_BASKET_ITEM(context){
+        context.commit('CLEAR_BASKET')
     }
 }
 
