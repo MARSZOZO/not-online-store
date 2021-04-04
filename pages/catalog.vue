@@ -10,12 +10,12 @@
         </div>
       </div>
       <div class="row">
-          <nuxt-child
-           :productList="productList"
-           @addGoodBasketBackpackItem="addGoodItem($event, 'backpack')"
-           @addGoodBasketTShirtItem="addGoodItem($event, 'tshirt')"
-           @addGoodBasketShirtItem="addGoodItem($event, 'shirt')"
-          />
+        <nuxt-child
+        :productList="productList"
+        @addGoodBasketBackpackItem="addGoodItem($event, 'backpack')"
+        @addGoodBasketTShirtItem="addGoodItem($event, 'tshirt')"
+        @addGoodBasketShirtItem="addGoodItem($event, 'shirt')"
+        />
       </div>
     </div>
   </div>
@@ -26,12 +26,20 @@ export default {
   data() {
     return {
       productList: [],
-      sortType: 'ratingUp',
+      sortType: 'default',
       sortOptions: [
+        { text: 'Сортировать по', value: 'default' },
         { text: 'По популярности', value: 'ratingUp' },
         { text: 'Сначала дешевые', value: 'priceDown' },
         { text: 'Сначала дорогие', value: 'priceUp' }
       ]
+    }
+  },
+  watch: {
+    '$route'(val) {
+      if(val){
+        this.sortingOfGoods(this.sortType, this.$route.name.substring(8));
+      }
     }
   },
   mounted () {
@@ -53,12 +61,14 @@ export default {
         case 'priceUp':
           this.sortGoodsList(this.productList[name], name, 'up')
           break;
-        default:
+        case 'ratingUp':
           this.sortGoodsList(this.productList[name], name, 'rating')
+          break;
+        default:
+          this.sortGoodsList(this.productList[name], name, 'default')
           break;
       }
     },
-
     sortGoodsList(goodsList, arrName, type){
       let sortable = []
       for(let goodItem in goodsList){
@@ -72,6 +82,8 @@ export default {
             return a.price - b.price;
           else if(type == 'rating')
             return a.rating - b.rating;
+          else if(type == 'default')
+            return sortable
       });
       sortable.reverse();
       this.productList[arrName] = sortable

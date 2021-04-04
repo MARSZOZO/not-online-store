@@ -30,9 +30,7 @@
         <template v-if="basketGoogs.length == 0">
           <div class="row">
             <div class="col-12">
-              <span class="f-size-18 f-black"
-                >Пока что вы ничего не добавили в корзину.</span
-              >
+              <span class="f-size-18 f-black">Пока что вы ничего не добавили в корзину.</span>
             </div>
           </div>
           <div class="row mt-10">
@@ -117,7 +115,7 @@
 export default {
   data() {
     return {
-      basketGoogs: this.$store.getters.BASKET,
+      basketGoogs: [],
       customerData: {
         name: "",
         phone: "",
@@ -125,6 +123,11 @@ export default {
       },
       traggerSuccessOrder: false,
     };
+  },
+  watch: {
+    '$store.getters.BASKET'(val) {
+        this.basketGoogs = val
+    }
   },
   methods: {
     handlerCloseBasketPanel() {
@@ -140,6 +143,7 @@ export default {
         this.customerData.phone &&
         this.customerData.address
       ) {
+        this.$store.dispatch('CLEAR_BASKET_ITEM')
         this.basketGoogs = [];
         this.traggerSuccessOrder = true;
         this.customerData = {};

@@ -31,6 +31,11 @@ export default {
 	props: {
 		productList: { type: Object|Array },
 	},
+  data() {
+    return {
+      loading: false
+    }
+  },
   methods: {
     addGoodsBasket(index) {
       this.$emit('addGoodBasketBackpackItem', index)

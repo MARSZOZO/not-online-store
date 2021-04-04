@@ -7,17 +7,17 @@
         />
       </div>
     </div>
-    <div class="row">
+    <div id="main" class="row">
       <div class="col-1">
         <Sidebar />
       </div>
       <div class="col-11">
-        <BasketSlide
-          @closeBasketPanel="closeBasketPanel"
-        />
         <Nuxt />
       </div>
     </div>
+      <BasketSlide
+        @closeBasketPanel="closeBasketPanel"
+      />    
   </div>
 </template>
 
@@ -41,9 +41,11 @@ export default {
     },
     openBasketPanel() {
       document.getElementById("menu").classList.add('menu-open');
+      document.getElementById("main").classList.add('milk-shadow')
     },
     closeBasketPanel() {
       document.getElementById("menu").classList.remove('menu-open');
+      document.getElementById("main").classList.remove('milk-shadow')
     }
   },
 }
@@ -172,6 +174,18 @@ a {
   transition: 0.5s;
   background: #59606D !important;
 }
+
+/* -- Затемнение фона */
+.milk-shadow {
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 0;
+  opacity: 0.4;
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+}
+
 
 
 .mt-25vw {

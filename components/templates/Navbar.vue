@@ -6,21 +6,19 @@
         src="~/assets/basket-empty.svg"
         alt="basket"
       />
-      <template v-if="countGoods.length != 0">
+      <template v-if="BASKET.length != 0">
         <div class="count-basket-goods">
-          <span>{{ countGoods.length }}</span>
+          <span>{{ BASKET.length }}</span>
         </div>
       </template>
     </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
-  data() {
-    return {
-      countGoods: this.$store.getters.BASKET,
-    };
-  },
+  computed: mapGetters(["BASKET"]),
   methods: {
     handlerOpenBasketPanel() {
       this.$emit("openBasketPanel");
