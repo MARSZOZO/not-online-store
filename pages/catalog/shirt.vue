@@ -3,11 +3,17 @@
     <div class="col-3" v-for="(item, index) in productList.shirt" :key="index">
       <div class="card box-shadow b-white">
         <div class="card-rating">
-          <img src="~/assets/star.svg"/>
-          <span class="f-size-14 f-yellow f-bold position-absolute">{{item.rating}}</span>
+          <img src="~/assets/star.svg" />
+          <span class="f-size-14 f-yellow f-bold position-absolute">{{
+            item.rating
+          }}</span>
         </div>
         <div class="card-basket">
-          <span @click="addGoodsShirt(index)"><img class="w-15 pointer hover-icon" src="~/assets/basket-empty.svg"/></span>
+          <span @click="addGoodsShirt(index)"
+            ><img
+              class="w-15 pointer hover-icon"
+              src="~/assets/basket-empty.svg"
+          /></span>
         </div>
         <div class="center">
           <img class="img-tshirt" :src="item.photo" alt="" />
@@ -27,19 +33,13 @@
 
 <script>
 export default {
-	props: {
-		productList: { type: Object|Array },
-	},
+  props: {
+    productList: { type: Object | Array },
+  },
   methods: {
     addGoodsShirt(index) {
-			this.$emit('addGoodBasketShirtItem', index)
+      this.$emit("addGoodBasketShirtItem", index);
     },
-  }
-}
+  },
+};
 </script>
-
-<style>
-.img-tshirt {
-    width: 250px
-}
-</style>

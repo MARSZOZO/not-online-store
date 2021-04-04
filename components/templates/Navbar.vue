@@ -1,21 +1,21 @@
 <template>
-    <div class="header-basket">
-      <img
-        class="hover-icon"
-        @click="handlerOpenBasketPanel"
-        src="~/assets/basket-empty.svg"
-        alt="basket"
-      />
-      <template v-if="BASKET.length != 0">
-        <div class="count-basket-goods">
-          <span>{{ BASKET.length }}</span>
-        </div>
-      </template>
-    </div>
+  <div class="header-basket">
+    <img
+      class="hover-icon"
+      @click="handlerOpenBasketPanel"
+      src="~/assets/basket-empty.svg"
+      alt="basket"
+    />
+    <template v-if="BASKET.length != 0">
+      <div class="count-basket-goods">
+        <span>{{ BASKET.length }}</span>
+      </div>
+    </template>
+  </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
   computed: mapGetters(["BASKET"]),
@@ -27,7 +27,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
 .count-basket-goods {
   position: absolute;
   top: -9px;
@@ -45,4 +45,5 @@ export default {
   font-size: 11px;
   color: white;
 }
-</style>
+</style>>
+

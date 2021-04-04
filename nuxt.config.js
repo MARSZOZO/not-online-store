@@ -14,21 +14,15 @@ export default {
     ]
   },
 
-  css: [
-  ],
+  css: [],
 
-  plugins: [
-    { src: '~plugins/phoneMask.js', ssr: false }
-  ],
+  plugins: [{ src: '~plugins/phoneMask.js', ssr: false }],
 
   components: true,
 
-  buildModules: [
-  ],
+  buildModules: [],
 
-  modules: [
-  ],
+  modules: [],
 
-  build: {
-  }
+  build: {}
 }

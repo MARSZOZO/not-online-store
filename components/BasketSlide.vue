@@ -10,7 +10,7 @@
         </div>
       </div>
       <template v-if="traggerSuccessOrder">
-        <div class="row center mt-25vw">
+        <div class="row center mt-30vh">
           <div class="col-12">
             <img src="~/assets/success-order.svg" alt="" />
           </div>
@@ -30,7 +30,9 @@
         <template v-if="basketGoogs.length == 0">
           <div class="row">
             <div class="col-12">
-              <span class="f-size-18 f-black">Пока что вы ничего не добавили в корзину.</span>
+              <span class="f-size-18 f-black"
+                >Пока что вы ничего не добавили в корзину.</span
+              >
             </div>
           </div>
           <div class="row mt-10">
@@ -61,7 +63,9 @@
                     </ul>
                   </div>
                   <div class="col-1 trash-block">
-                    <span @click="trashGoodItem(index)"><img class="trash-icon" src="~/assets/trash.svg" alt="" /></span>
+                    <span @click="trashGoodItem(index)"
+                      ><img class="trash-icon" src="~/assets/trash.svg" alt=""
+                    /></span>
                   </div>
                 </div>
               </div>
@@ -125,9 +129,9 @@ export default {
     };
   },
   watch: {
-    '$store.getters.BASKET'(val) {
-        this.basketGoogs = val
-    }
+    "$store.getters.BASKET"(val) {
+      this.basketGoogs = val;
+    },
   },
   methods: {
     handlerCloseBasketPanel() {
@@ -143,7 +147,7 @@ export default {
         this.customerData.phone &&
         this.customerData.address
       ) {
-        this.$store.dispatch('CLEAR_BASKET_ITEM')
+        this.$store.dispatch("CLEAR_BASKET_ITEM");
         this.basketGoogs = [];
         this.traggerSuccessOrder = true;
         this.customerData = {};
@@ -153,8 +157,7 @@ export default {
 };
 </script>
 
-
-<style scoped>
+<style >
 .parent-block {
   position: relative;
 }

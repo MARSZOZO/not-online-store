@@ -1,13 +1,23 @@
 <template>
   <div>
-    <div class="col-3" v-for="(item, index) in productList.backpack" :key="index">
+    <div
+      class="col-3"
+      v-for="(item, index) in productList.backpack"
+      :key="index"
+    >
       <div class="card box-shadow b-white">
         <div class="card-rating">
-          <img src="~/assets/star.svg"/>
-          <span class="f-size-14 f-yellow f-bold position-absolute">{{item.rating}}</span>
+          <img src="~/assets/star.svg" />
+          <span class="f-size-14 f-yellow f-bold position-absolute">{{
+            item.rating
+          }}</span>
         </div>
         <div class="card-basket">
-          <span @click="addGoodsBasket(index)"><img class="w-15 pointer hover-icon" src="~/assets/basket-empty.svg"/></span>
+          <span @click="addGoodsBasket(index)"
+            ><img
+              class="w-15 pointer hover-icon"
+              src="~/assets/basket-empty.svg"
+          /></span>
         </div>
         <div class="center">
           <img :src="item.photo" alt="" />
@@ -26,20 +36,19 @@
 </template>
 
 <script>
-
 export default {
-	props: {
-		productList: { type: Object|Array },
-	},
+  props: {
+    productList: { type: Object | Array },
+  },
   data() {
     return {
-      loading: false
-    }
+      loading: false,
+    };
   },
   methods: {
     addGoodsBasket(index) {
-      this.$emit('addGoodBasketBackpackItem', index)
-    }
-  }
-}
+      this.$emit("addGoodBasketBackpackItem", index);
+    },
+  },
+};
 </script>
